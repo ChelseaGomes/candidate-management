@@ -1,0 +1,4 @@
+ID,firstName,lastName,birthDate,city,email,department_code,contractType_code,reportsTo_ID,preferredLanguage_code,startDate,seniority,status_code
+1c3f19de-ff5d-4b7e-b2bc-0e1b8e7d7d71,John,Doe,1990-01-01,Amsterdam,john.doe@example.com,HR,fulltime,2c3d21af-112f-4ca7-9ff8-3a62d2f10a77,ENG,2024-01-15,5,goedgekeurd
+2c3f19de-ff5d-4b7e-b2bc-0e1b8e7d7d72,Jane,Smith,1985-05-10,Brussels,jane.smith@example.com,FIN,Halftijds,,NL,2023-10-01,10,afgewezen
+3c3f19de-ff5d-4b7e-b2bc-0e1b8e7d7d73,Mike,Brown,1992-09-15,Berlin,mike.brown@example.com,DEV,stage,1c3f19de-ff5d-4b7e-b2bc-0e1b8e7d7d71,GER,2023-06-01,2,afgewezen
