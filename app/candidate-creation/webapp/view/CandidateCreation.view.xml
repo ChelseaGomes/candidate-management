@@ -3,12 +3,12 @@
     xmlns="sap.m"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core">
-    <Page id="page" title="Kandidaat Aanmaken">
+    <Page id="page" title="Kandidaat Creation Applicatie">
         <VBox class="sapUiSmallMargin">
             <f:SimpleForm id="SimpleFormCandidateCreation"
                 editable="true"
                 layout="ResponsiveGridLayout"
-                title="Kandidaat Aanmaken"
+                title="Kandidaat aanmaken"
                 labelSpanXL="4"
                 labelSpanL="3"
                 labelSpanM="4"

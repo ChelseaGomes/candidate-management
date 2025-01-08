@@ -21,6 +21,7 @@
   "sapux": [
     "app/candidate-management",
     "app/candidate-management",
-    "app/candidate-creation"
+    "app/candidate-creation",
+    "app/candidate-management"
   ]
 }
