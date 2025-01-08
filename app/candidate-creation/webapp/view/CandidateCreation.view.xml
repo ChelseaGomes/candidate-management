@@ -30,7 +30,7 @@
                     <Input value="{candidateModel>/lastName}" placeholder="Voer familienaam in" />
 
                     <Label text="Geboortedatum" />
-                    <DatePicker value="{candidateModel>/birthDate}" displayFormat="yyyy-MM-dd" placeholder="Voer geboortedatum in" />
+                    <DatePicker value="{candidateModel>/birthDate}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"  placeholder="Voer geboortedatum in" />
 
                     <Label text="Woonplaats" />
                     <Input value="{candidateModel>/city}" placeholder="Voer woonplaats in" />
@@ -59,7 +59,7 @@
                     </Select>
 
                     <Label text="Startdatum" />
-                    <DatePicker value="{candidateModel>/startDate}" displayFormat="yyyy-MM-dd" placeholder="Kies startdatum" />
+                    <DatePicker value="{candidateModel>/startDate}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"  placeholder="Kies startdatum" />
 
                     <Label text="Anciënniteit (in jaren)" />
                     <Input value="{candidateModel>/seniority}" type="Number" placeholder="Voer aantal jaren in" />
