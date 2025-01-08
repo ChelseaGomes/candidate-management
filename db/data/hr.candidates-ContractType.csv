@@ -1,6 +1,6 @@
-code,name,descr
-4/5, viervijfde, 4/5
-3/5, drievijfde, 3/5
-intern, stage, Stage
-half, halftijds, Halftijds
-
+ID,code,description
+01,FT,Full Time
+02,F4/5,4/5
+03,F3/5,3/5
+04,PT,Halftijds
+05,ST,Stage

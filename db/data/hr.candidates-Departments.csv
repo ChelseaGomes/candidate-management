@@ -1,7 +1,7 @@
-code,description,maxRound1,maxRound2
-HR,Human Resources,5,2
-FIN,Finance,5,2
-SAL,Sales,5,2
-MKT,Marketing,3,2
-DEV,Development,10,4
-IT,IT Department,5,2
+ID,code,description,maxRound
+01,HR,Human Resources,5
+02,FIN,Finance,5
+03,SAL,Sales,3
+04,MKT,Marketing,3
+05,DEV,Development,10
+06,IT,IT Department,5

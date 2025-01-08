@@ -1,4 +1,11 @@
-ID,firstName,lastName,birthDate,city,email,department_code,contractType_code,reportsTo_ID,preferredLanguage_code,startDate,seniority,status_code
-1c3f19de-ff5d-4b7e-b2bc-0e1b8e7d7d71,John,Doe,1990-01-01,Amsterdam,john.doe@example.com,HR,fulltime,2c3d21af-112f-4ca7-9ff8-3a62d2f10a77,ENG,2024-01-15,5,goedgekeurd
-2c3f19de-ff5d-4b7e-b2bc-0e1b8e7d7d72,Jane,Smith,1985-05-10,Brussels,jane.smith@example.com,FIN,Halftijds,,NL,2023-10-01,10,afgewezen
-3c3f19de-ff5d-4b7e-b2bc-0e1b8e7d7d73,Mike,Brown,1992-09-15,Berlin,mike.brown@example.com,DEV,stage,1c3f19de-ff5d-4b7e-b2bc-0e1b8e7d7d71,GER,2023-06-01,2,afgewezen
+ID,firstName,lastName,birthDate,city,email,department_ID,contractType_ID,reportsTo_ID,preferredLanguage_ID,startDate,seniority,status_code
+01,Emma,Johnson,1990-03-15,Antwerp,emma.johnson@example.com,01,01,01,02,2025-02-01,2,I
+02,Liam,Smith,1985-07-22,Brussels,liam.smith@example.com,02,02,02,01,2025-01-15,5,G
+03,Olivia,Brown,1993-11-30,Ghent,olivia.brown@example.com,03,03,03,03,2025-03-01,1,A
+04,Noah,Taylor,1998-05-10,Leuven,noah.taylor@example.com,04,04,01,04,2025-02-15,0,I
+05,Ava,Davies,1990-12-12,Bruges,ava.davies@example.com,05,05,06,02,2025-01-20,4,G
+06,Ethan,Williams,1995-09-05,Hasselt,ethan.williams@example.com,06,01,04,03,2025-03-10,3,I
+07,Isabella,Miller,1997-08-25,Mechelen,isabella.miller@example.com,01,04,02,04,2025-02-28,1,A
+08,Mason,Clark,1988-02-14,Liège,mason.clark@example.com,03,02,03,01,2025-01-31,6,G
+09,Sophia,Davis,1992-06-18,Antwerp,sophia.davis@example.com,05,03,06,02,2025-02-05,3,I
+10,Logan,Wilson,1994-01-01,Namur,logan.wilson@example.com,02,05,01,03,2025-03-12,2,G

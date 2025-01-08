@@ -15,9 +15,12 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-candidate-management": "cds watch --open candidate-management/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-candidate-management": "cds watch --open candidate-management/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-candidate-creation": "cds watch --open candidate-creation/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
-    "app/candidate-management"
+    "app/candidate-management",
+    "app/candidate-management",
+    "app/candidate-creation"
   ]
 }

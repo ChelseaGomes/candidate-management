@@ -1,4 +1,7 @@
-ID,name,email,department_code
-1c3f19de-ff5d-4b7e-b2bc-0e1b8e7d7d71,Anna Bell,anna.bell@example.com,HR
-2c3d21af-112f-4ca7-9ff8-3a62d2f10a77,Bob White,bob.white@example.com,FIN
-3c3f19de-cc5d-4b7e-a2aa-7a1b7c9a7b77,Carol Green,carol.green@example.com,DEV
+ID,name,email,department_ID
+01,Chelsea Gomes,chelsea.gomes@example.com,01
+02,Hakim Ghanoudi,hakim.ghanoudi@example.com,02
+03,Wilson Tochi Uduma,wilson.uduma@example.com,03
+04,Lyssa Van Bockel,lyssa.vanbockel@example.com,04
+05,Nathalie Janssens,nathalie.janssens@example.com,05
+06,Joerik Michiels,joerik.michiels@example.com,06

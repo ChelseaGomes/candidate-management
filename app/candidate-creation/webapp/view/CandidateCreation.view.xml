@@ -1,0 +1,74 @@
+<mvc:View controllerName="candidatecreation.controller.CandidateCreation"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Page id="page" title="Kandidaat Aanmaken">
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="SimpleFormCandidateCreation"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Kandidaat Aanmaken"
+                labelSpanXL="4"
+                labelSpanL="3"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="4"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false">
+                <f:content>
+                    <Label text="Voornaam" />
+                    <Input value="{candidateModel>/firstName}" placeholder="Voer voornaam in" />
+
+                    <Label text="Familienaam" />
+                    <Input value="{candidateModel>/lastName}" placeholder="Voer familienaam in" />
+
+                    <Label text="Geboortedatum" />
+                    <DatePicker value="{candidateModel>/birthDate}" displayFormat="yyyy-MM-dd" placeholder="Voer geboortedatum in" />
+
+                    <Label text="Woonplaats" />
+                    <Input value="{candidateModel>/city}" placeholder="Voer woonplaats in" />
+
+                    <Label text="E-mailadres" />
+                    <Input value="{candidateModel>/email}" type="Email" placeholder="Voer e-mailadres in" />
+
+                    <Label text="Afdeling" />
+                    <Select selectedKey="{candidateModel>/department}" items="{path: '/Departments'}">
+                        <core:Item key="{ID}" text="{description}" />
+                    </Select>
+
+                    <Label text="Contracttype" />
+                    <Select selectedKey="{candidateModel>/contractType}" items="{path: '/ContractType'}">
+                        <core:Item key="{ID}" text="{description}" />
+                    </Select>
+
+                    <Label text="Rapporteert naar" />
+                    <Select selectedKey="{candidateModel>/reportsTo}" items="{path: '/Employees'}">
+                        <core:Item key="{ID}" text="{name}" />
+                    </Select>
+
+                    <Label text="Voorkeurstaal" />
+                    <Select selectedKey="{candidateModel>/preferredLanguage}" items="{path: '/Languages'}">
+                        <core:Item key="{ID}" text="{description}" />
+                    </Select>
+
+                    <Label text="Startdatum" />
+                    <DatePicker value="{candidateModel>/startDate}" displayFormat="yyyy-MM-dd" placeholder="Kies startdatum" />
+
+                    <Label text="Anciënniteit (in jaren)" />
+                    <Input value="{candidateModel>/seniority}" type="Number" placeholder="Voer aantal jaren in" />
+                </f:content>
+            </f:SimpleForm>
+            <HBox justifyContent="End" class="sapUiSmallMarginTop">
+                <Button text="Indienen" press="onCreateCandidate" type="Emphasized" />
+                <Button text="Ingediende kandidaten bekijken" press="onShowCandidates" type="Neutral" />
+            </HBox>
+        </VBox>
+    </Page>
+</mvc:View>

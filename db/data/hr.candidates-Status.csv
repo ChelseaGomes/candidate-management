@@ -1,4 +1,4 @@
-code,text,criticality
-approved,Goedgekeurd,3
-rejected,Afgewezen,1
-pending,In revisie,2
+code,criticality,name,descr
+I,5,submitted,Ingediend
+G,3,approved,Goedgekeurd
+A,1,rejected,Afgewezen

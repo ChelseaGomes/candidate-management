@@ -1,5 +1,5 @@
-code,name,descr
-EN,English, Engels
-NL,Dutch, Nederlands
-DE,German, Duits
-FR,French, Frans
+ID,code,description
+01,en,Engels
+02,nl,Nederlands
+03,fr,Frans
+04,de,Duits
