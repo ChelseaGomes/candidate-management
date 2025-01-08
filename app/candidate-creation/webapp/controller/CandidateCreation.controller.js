@@ -81,7 +81,79 @@ sap.ui.define([
                 });
         },
 
-        
-        
+        _resetCandidateForm: function () {
+            // Reset het formulier naar standaardwaarden
+            this.getView().getModel("candidateModel").setData({
+                firstName: "",
+                lastName: "",
+                birthDate: "",
+                city: "",
+                email: "",
+                department: "",
+                contractType: "",
+                reportsTo: "",
+                preferredLanguage: "",
+                startDate: "",
+                seniority: ""
+            });
+        },
+
+        onShowCandidatesPerDepartment: function () {
+            const oModel = this.getOwnerComponent().getModel(); // Haal het OData V4-model op
+
+            if (!oModel) {
+                sap.m.MessageBox.error("OData-model is niet beschikbaar!");
+                return;
+            }
+
+            // Maak een binding voor de query
+            const oListBinding = oModel.bindList("/Candidates", undefined, undefined, undefined, {
+                "$apply": "groupby((department_ID),aggregate($count as count))"
+            });
+
+            oListBinding.requestContexts().then((aContexts) => {
+                // Verwerk de resultaten van de Candidates-query
+                const aResults = aContexts.map(oContext => oContext.getObject());
+
+                console.log("Aantal kandidaten per afdeling:", aResults);
+
+                // Haal alle unieke department_ID's op
+                const aDepartmentIDs = aResults.map(res => res.department_ID);
+
+                // Maak een binding om de bijbehorende Departments op te halen
+                const oDepartmentsBinding = oModel.bindList("/Departments");
+                oDepartmentsBinding.requestContexts().then((aDeptContexts) => {
+                    const aDepartments = aDeptContexts.map(oContext => oContext.getObject());
+
+                    // Maak een mapping van department_ID naar description
+                    const departmentMap = aDepartments.reduce((map, department) => {
+                        map[department.ID] = department.description;
+                        return map;
+                    }, {});
+
+                    // Combineer de resultaten
+                    const results = aResults.map(res => {
+                        const departmentDescription = departmentMap[res.department_ID] || "Onbekend";
+                        return `Afdeling: ${departmentDescription} - Aantal kandidaten: ${res.count}`;
+                    }).join("\n");
+
+                    // Toon de resultaten in een MessageBox
+                    sap.m.MessageBox.information("Kandidaten per afdeling:\n" + results);
+                }).catch((oError) => {
+                    console.error("Error fetching departments:", oError);
+                    sap.m.MessageBox.error("Fout bij het ophalen van de afdelingen: " + oError.message);
+                });
+            }).catch((oError) => {
+                console.error("Error fetching candidates per department:", oError);
+                sap.m.MessageBox.error("Fout bij het ophalen van de gegevens: " + oError.message);
+            });
+        }
+
+
+
+
+
+
+
     });
 });

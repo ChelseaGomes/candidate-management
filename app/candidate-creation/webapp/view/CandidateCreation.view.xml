@@ -67,7 +67,7 @@
             </f:SimpleForm>
             <HBox justifyContent="End" class="sapUiSmallMarginTop">
                 <Button text="Indienen" press="onCreateCandidate" type="Emphasized" />
-                <Button text="Ingediende kandidaten bekijken" press="onShowCandidates" type="Neutral" />
+                <Button text="Ingediende kandidaten bekijken" press="onShowCandidatesPerDepartment" type="Neutral" />
             </HBox>
         </VBox>
     </Page>
