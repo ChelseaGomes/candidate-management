@@ -45,41 +45,73 @@ sap.ui.define([
                 }
             }
 
-            // Stap 1: Maak een payload aan voor de kandidaat
-            const oPayload = {
-                firstName: oCandidateData.firstName,
-                lastName: oCandidateData.lastName,
-                birthDate: oCandidateData.birthDate,
-                city: oCandidateData.city,
-                email: oCandidateData.email,
-                department_ID: oCandidateData.department, // Verwijst naar de ID van de afdeling
-                contractType_ID: oCandidateData.contractType, // Verwijst naar de ID van het contracttype
-                reportsTo_ID: oCandidateData.reportsTo, // Verwijst naar de ID van de manager
-                preferredLanguage_ID: oCandidateData.preferredLanguage, // Verwijst naar de ID van de taal
-                startDate: oCandidateData.startDate,
-                seniority: oCandidateData.seniority
-            };
+            // Stap 1: Controleer of het aantal kandidaten in de afdeling de maxRound overschrijdt
+            const departmentID = oCandidateData.department; // Verwijst naar de ID van de afdeling
 
-            console.log("Candidate Payload:", oPayload);
+            // Haal de huidige kandidaten en maxRound op voor de afdeling
+            const oDepartmentBinding = oModel.bindContext(`/Departments(${departmentID})`);
+            oDepartmentBinding.requestObject().then((oDepartmentData) => {
+                const maxRound = oDepartmentData.maxRound; // Maximum aantal kandidaten
+                const departmentCode = oDepartmentData.code;
 
-            // Stap 2: Voeg de kandidaat toe via het OData-model
-            const oCandidateListBinding = oModel.bindList("/Candidates"); // Verbind met de "Candidates"-entiteit
-            const oCandidateContext = oCandidateListBinding.create(oPayload);
-
-            oCandidateContext
-                .created()
-                .then(() => {
-                    // Succesmelding
-                    sap.m.MessageBox.success("Kandidaat met succes aangemaakt!");
-
-                    // Stap 3: Reset het formulier
-                    this._resetCandidateForm();
-                })
-                .catch((oError) => {
-                    console.error("Error creating Candidate:", oError);
-                    sap.m.MessageBox.error("Fout bij het aanmaken van de kandidaat: " + oError.message);
+                // Haal het huidige aantal kandidaten in deze afdeling op
+                const oCandidateListBinding = oModel.bindList("/Candidates", undefined, undefined, undefined, {
+                    $filter: `department_ID eq '${departmentID}'`
                 });
+
+                oCandidateListBinding.requestContexts().then((aContexts) => {
+                    const currentCount = aContexts.length;
+
+                    // Controleer of het maximum wordt overschreden
+                    if (currentCount >= maxRound) {
+                        sap.m.MessageBox.error(
+                            `Het maximum aantal kandidaten (${maxRound}) voor de afdeling ${departmentCode} is al bereikt. De kandidaat kan niet worden toegevoegd.`
+                        );
+                        return;
+                    }
+
+                    // Stap 2: Maak een payload aan voor de kandidaat
+                    const oPayload = {
+                        firstName: oCandidateData.firstName,
+                        lastName: oCandidateData.lastName,
+                        birthDate: oCandidateData.birthDate,
+                        city: oCandidateData.city,
+                        email: oCandidateData.email,
+                        department_ID: oCandidateData.department, // Verwijst naar de ID van de afdeling
+                        contractType_ID: oCandidateData.contractType, // Verwijst naar de ID van het contracttype
+                        reportsTo_ID: oCandidateData.reportsTo, // Verwijst naar de ID van de manager
+                        preferredLanguage_ID: oCandidateData.preferredLanguage, // Verwijst naar de ID van de taal
+                        startDate: oCandidateData.startDate,
+                        seniority: oCandidateData.seniority
+                    };
+
+                    console.log("Candidate Payload:", oPayload);
+
+                    // Stap 3: Voeg de kandidaat toe via het OData-model
+                    const oCandidateListBinding = oModel.bindList("/Candidates"); // Verbind met de "Candidates"-entiteit
+                    const oCandidateContext = oCandidateListBinding.create(oPayload);
+
+                    oCandidateContext
+                        .created()
+                        .then(() => {
+                            // Succesmelding
+                            sap.m.MessageBox.success("Kandidaat met succes aangemaakt!");
+
+                            // Stap 4: Reset het formulier
+                            this._resetCandidateForm();
+                        })
+                        .catch((oError) => {
+                            console.error("Error creating Candidate:", oError);
+                            sap.m.MessageBox.error("Fout bij het aanmaken van de kandidaat: " + oError.message);
+                        });
+                });
+            }).catch((oError) => {
+                console.error("Error fetching department data:", oError);
+                sap.m.MessageBox.error("Fout bij het ophalen van de afdeling gegevens: " + oError.message);
+            });
         },
+
+
 
         _resetCandidateForm: function () {
             // Reset het formulier naar standaardwaarden
