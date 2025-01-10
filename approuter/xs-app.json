@@ -1,0 +1,33 @@
+{
+    "authenticationMethod": "none",
+    "routes": [
+      {
+        "source": "^/api_docii/(.*)$",
+        "target": "/$1",
+        "destination": "api-docii",
+        "authenticationType": "xsuaa",
+        "csrfProtection": false
+      },
+      {
+        "source": "^/spa_process_destination/(.*)$",
+        "target": "/$1",
+        "destination": "spa_process_destination",
+        "authenticationType": "xsuaa",
+        "csrfProtection": false
+      },
+      {
+        "source": "^/v2/danoneservice/(.*)$",
+        "target": "/v2/danoneservice/$1",
+        "destination": "env_destination_backend",
+        "authenticationType": "xsuaa",
+        "csrfProtection": false
+      },
+      {
+        "source": "^/(.*)$",
+        "target": "$1",
+        "destination": "env_destination_backend",
+        "authenticationType": "xsuaa",
+        "csrfProtection": false
+      }
+    ]
+}

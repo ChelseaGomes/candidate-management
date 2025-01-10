@@ -7,4 +7,7 @@ service CandidateService {
     entity Languages as projection on m.Languages;
     entity ContractType as projection on m.ContractType;
     entity Status as projection on m.Status;
+
+    action TriggerBusinessProcess(Context: BusinessProcessContext) returns String; 
+    type BusinessProcessContext{}
 }
