@@ -108,6 +108,42 @@ modules:
               ServiceKeyName: candidate-management-auth-key
               sap.cloud.service: candidatemanagement.service
 
+  - name: candidate-management
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: candidate-management-destination
+      - name: candidate-management-html5-runtime
+
+  - name: candidate-management-app-deployer
+    type: com.sap.application.content
+    path: gen
+    requires:
+      - name: candidate-management-html5-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: app/
+      requires:
+        - name: candidatemanagementcandidatecreation
+          artifacts:
+            - candidate-creation.zip
+          target-path: app/
+        - name: candidatemanagementcandidatemanagement
+          artifacts:
+            - candidate-management.zip
+          target-path: app/
+
 resources:
   - name: candidate-management-db
     type: com.sap.xs.hdi-container
@@ -149,3 +185,8 @@ resources:
     parameters:
       service: html5-apps-repo
       service-plan: app-host
+  - name: candidate-management-html5-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
