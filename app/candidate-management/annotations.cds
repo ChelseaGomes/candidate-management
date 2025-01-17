@@ -196,17 +196,13 @@ annotate service.Candidates with {
                 },
                 {
                     $Type : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'code',
-                },
-                {
-                    $Type : 'Common.ValueListParameterDisplayOnly',
                     ValueListProperty : 'description',
                 },
             ],
             Label : '{i18n>Contracttype}',
         },
         Common.Label : '{i18n>ContractType}',
-        Common.ValueListWithFixedValues : false,
+        Common.ValueListWithFixedValues : true,
         Common.Text : {
             $value : contractType.description,
             ![@UI.TextArrangement] : #TextOnly,
@@ -231,13 +227,13 @@ annotate service.Candidates with {
                 },
                 {
                     $Type : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'email',
+                    ValueListProperty : 'department/description',
                 },
             ],
             Label : '{i18n>RapporteertNaar}',
         },
         Common.Label : '{i18n>RapporteertNaar}',
-        Common.ValueListWithFixedValues : false,
+        Common.ValueListWithFixedValues : true,
         Common.Text : {
             $value : reportsTo.name,
             ![@UI.TextArrangement] : #TextOnly,
